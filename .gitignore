@@ -1,0 +1,21 @@
+# Environment / secrets
+/.env
+/.env.*
+!/.env.example
+
+# Logs
+/logs/
+*.log
+
+# Do not ignore the src folder; source files live here
+# /src/
+
+# OS files
+Thumbs.db
+
+# IDE / editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp

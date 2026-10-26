@@ -1,0 +1,134 @@
+@media (min-width: 800px) {
+
+    .upload-section {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}
+
+/* ---------- PHOTO UPLOAD SECTION ---------- */
+.upload-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 24px;
+    align-items: flex-start;
+}
+
+.upload-photo-col {
+    flex: 1 1 280px;
+    max-width: 400px;
+}
+
+.photo-drop {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #e0e0e0;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 20px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.photo-drop .preview-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.photo-drop .drop-label {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #1a1a1a;
+}
+
+.photo-progress {
+    width: 100%;
+    height: 6px;
+    background: #9a9a9a;
+    border-radius: 999px;
+    margin-top: 12px;
+}
+
+.upload-form-col {
+    flex: 1 1 320px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 14px;
+    text-decoration: underline;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+.form-field input[type="text"],
+.form-field textarea {
+    width: 100%;
+    background: #ececec;
+    border: 1px solid #cfcfcf;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    max-height: 300px;
+}
+
+.form-field textarea {
+    border-radius: 12px;
+    resize: vertical;
+    min-height: 90px;
+}
+
+.confirm-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.confirm-btn {
+    background: #ececec;
+    border: 1px solid #cfcfcf;
+    border-radius: 999px;
+    padding: 10px 28px;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    color: #1a1a1a;
+}
+
+.confirm-btn:hover {
+    background: #dedede;
+}
+
+.delete-btn {
+    background: #f6dede;
+    border-color: #e0b3b3;
+    color: #8a1f1f;
+}
+
+.delete-btn:hover {
+    background: #f0c8c8;
+}
+
+.upload-section {
+    margin-left: 10%;
+    margin-right: 10%;
+}

@@ -1,0 +1,85 @@
+@media (min-width: 800px) {
+    .search-wrap {
+        margin-left: 20%;
+        margin-right: 30%;
+    }
+}
+
+/* ---------- MAIN CONTENT (below header) ---------- */
+main.content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 16px 0;
+}
+
+.description-box {
+    background: #d9d9d9;
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.photos-box {
+    background: #d9d9d9;
+    border-radius: 12px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+/* ---------- BOTTOM ICON NAV ---------- */
+.bottom-nav {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background: #f7f7f7;
+    padding: 20px 0 28px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.nav-item .icon-wrap {
+    width: 48px;
+    height: 48px;
+    background: #e6e6e6;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.nav-item .icon-wrap svg {
+    width: 26px;
+    height: 26px;
+    color: #1a1a1a;
+}
+
+.nav-item .label {
+    font-size: 14px;
+    color: #1a1a1a;
+}
