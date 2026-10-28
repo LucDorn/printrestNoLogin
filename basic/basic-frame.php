@@ -100,6 +100,7 @@
         <p class="popup-title">password of the img:</p>
         <input name="location" type="hidden" placeholder="<?php echo $location ?>" value="<?php echo $location ?>">
         <input name="password" type="password" id="imgPasswordInput" autocomplete="off">
+        <input type="hidden" name="which?" value="edit">
         <input type="submit" value="confirm">
     </form>
 

@@ -4,8 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // true or false: add or edit
-$isEdit = !empty($_SESSION['fileLocation']) || !empty($_SESSION['name']) || !empty($_SESSION['location']);
-
+if (!empty($_SESSION['which']) === 'edit') {
+    $isEdit = !empty($_SESSION['fileLocation']) || !empty($_SESSION['name']) || !empty($_SESSION['location']);
+}
 $location = "add-edit.php";
 require_once('./basic/basic-frame.php');
 ?>
@@ -22,7 +23,7 @@ require_once('./basic/basic-frame.php');
 <body>
 
     <!-- Photo upload section -->
-    <form action="<?php echo $isEdit ? './betweenPage/edit.php' : './betweenPage/add.php'; ?>" method="post" enctype="multipart/form-data" class="upload-section">
+    <form action="<?php echo !empty($isEdit) ? './betweenPage/edit.php' : './betweenPage/add.php'; ?>" method="post" enctype="multipart/form-data" class="upload-section">
         <div class="upload-photo-col">
             <?php $existingPhoto = isset($_SESSION['fileLocation']) && $_SESSION['fileLocation'] !== '' ? './photos/' . $_SESSION['fileLocation'] : ''; ?>
             <div class="photo-drop" role="button" tabindex="0" id="photoDrop">
@@ -49,8 +50,8 @@ require_once('./basic/basic-frame.php');
                     <input type="submit" value="delete" name="delete" class="confirm-btn delete-btn" formaction="./betweenPage/delete.php" formnovalidate>
                 <?php endif; ?>
                 <input type="submit"
-                    value="<?php echo $isEdit ? 'edit' : 'add'; ?>"
-                    name="<?php echo $isEdit ? 'edit' : 'submit'; ?>"
+                    value="<?php echo !empty($isEdit) ? 'edit' : 'add'; ?>"
+                    name="<?php echo !empty($isEdit) ? 'edit' : 'submit'; ?>"
                     class="confirm-btn">
             </div>
         </div>

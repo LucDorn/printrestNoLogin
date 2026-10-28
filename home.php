@@ -18,6 +18,7 @@ unset($_SESSION['new_password']);
 
 <body>
     <?php
+    session_destroy();
     $location = "home.php";
     require_once('./basic/basic-frame.php');
     ?>
