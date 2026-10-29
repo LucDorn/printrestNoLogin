@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>basicPage frame</title>
-    <link rel="stylesheet" href="./css/basic-frame.css">
+    <link rel="stylesheet" href="./css&script/basic-frame.css">
 </head>
 
 <body>
@@ -88,7 +88,7 @@
 
         <div class="drawer-nav">
             <button class="drawer-link" onclick="window.location.href='home.php'"><span class="dot"></span>home page</button>
-            <button class="drawer-link"><span class="dot"></span>list of other photos</button>
+            <button class="drawer-link" onclick="window.location.href='list.php'"> <span class="dot"></span>list of other photos</button>
             <button class="drawer-link" onclick="window.location.href='add-edit.php'"><span class="dot"></span>add your own photo</button>
             <button class="drawer-link" onclick="openPasswordPopup()"><span class="dot"></span>edit your own
                 photo</button>
@@ -104,7 +104,7 @@
         <input type="submit" value="confirm">
     </form>
 
-    <script src="./script/basic-frame.js"></script>
+    <script src="./css&script/basic-frame.js"></script>
 
 </body>
 

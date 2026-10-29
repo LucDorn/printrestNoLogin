@@ -13,7 +13,7 @@ unset($_SESSION['new_password']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css&script/home.css">
 </head>
 
 <body>
@@ -59,7 +59,7 @@ unset($_SESSION['new_password']);
             <span class="label">edit</span>
         </button>
 
-        <button class="nav-item" aria-label="List">
+        <button class="nav-item" aria-label="List" onclick="window.location.href='list.php'">
             <span class="icon-wrap">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="3" y="6" width="14" height="14" rx="1.5" stroke="currentColor" stroke-width="1.8" />

@@ -127,27 +127,34 @@
     }
 
     $id = $_GET['id'];
-    $stmt1 = $conn->prepare("SELECT role WHERE user_id = ?, name =?, password = ?");
+    $stmt1 = $conn->prepare("SELECT name, location, fileLocation FROM photo WHERE user_id = ? AND  visible = 1");
     $stmt1->bind_param("i", $id);
     $stmt1->execute();
 
     $result = $stmt1->get_result();
     $row = $result->fetch_assoc();
+    $stmt1->close();
 
     $imageExists = false;
     $name = 'no img found';
-    $fileLocation = './photos/none';
+    $fileLocation = './betweenPage/photos/none';
 
-    if ($row) {
-        $fullPath = './photos/' . $row['fileLocation'];
+    if (!empty($row)) {
+        $fullPath = './betweenPage/photos/' . $row['fileLocation'];
 
         if (!empty($row['fileLocation']) && file_exists($fullPath)) {
+            $location = $row['location'];
             $name         = $row['name'];
             $fileLocation = $fullPath;
             $imageExists  = true;
+        } else {
+            header('Location: ./home.php');
+            exit;
         }
+    } else {
+        header('Location: ./home.php');
+        exit;
     }
-    $stmt1->close();
     ?>
 
 
@@ -165,8 +172,8 @@
                 </div>
                 <div class="field">
                     <span class="label">location name:</span>
-                    <span class="value" id="location-name"><?php echo htmlspecialchars($row['location']); ?></span>
-                    <input type="hidden" name="location" value="<?php echo htmlspecialchars($row['location']); ?>">
+                    <span class="value" id="location-name"><?php echo htmlspecialchars($location); ?></span>
+                    <input type="hidden" name="location" value="<?php echo htmlspecialchars($location); ?>">
                 </div>
 
                 <!-- hidden field carrying the image location to the next page -->

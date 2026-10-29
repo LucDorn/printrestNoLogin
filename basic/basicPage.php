@@ -1,7 +1,9 @@
-
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-require_once '../src/vendor/autoload.php';
+require_once  'src/vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
