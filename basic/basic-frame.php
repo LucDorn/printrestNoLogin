@@ -98,7 +98,6 @@
     <!-- Password popup (opened from "edit your own photo") -->
     <form action="./betweenPage/pre-edit.php" class="password-popup" id="passwordPopup" method="post" enctype="multipart/form-data">
         <p class="popup-title">password of the img:</p>
-        <input name="location" type="hidden" placeholder="<?php echo $location ?>" value="<?php echo $location ?>">
         <input name="password" type="password" id="imgPasswordInput" autocomplete="off">
         <input type="hidden" name="which?" value="edit">
         <input type="submit" value="confirm">

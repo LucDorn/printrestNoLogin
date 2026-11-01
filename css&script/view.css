@@ -1,0 +1,43 @@
+.cd {
+    position: fixed;
+    right: -200px;
+    bottom: -200px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 9999;
+
+    /* shiny CD surface */
+    background:
+        conic-gradient(from 0deg,
+            #e8e8f0, #b9c6ff, #f5d6ff, #c9fff1,
+            #fff5c9, #ffc9c9, #e8e8f0, #b9c6ff,
+            #f5d6ff, #c9fff1, #e8e8f0);
+
+    /* hole in the middle */
+    -webkit-mask: radial-gradient(circle, transparent 0 13%, #000 14%);
+    mask: radial-gradient(circle, transparent 0 13%, #000 14%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+.cd.play {
+    animation: cd-insert 1.4s ease-in-out forwards;
+}
+
+@keyframes cd-insert {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-45vw, -120vh) rotate(720deg) scale(0.6);
+    }
+}

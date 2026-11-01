@@ -184,6 +184,33 @@
 
         </section>
     </main>
+    <div class="cd" id="cd"></div>
+    <link rel="stylesheet" href="./css&script/view.css">
+    <script>
+        const form = document.querySelector('.right form');
+        const cd = document.getElementById('cd');
+        const btn = form.querySelector('.export');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // wait for the animation first
+            btn.disabled = true; // prevent double clicks
+
+            cd.classList.remove('play');
+            void cd.offsetWidth; // restart the animation if needed
+            cd.classList.add('play');
+
+            // start the download shortly after the disc begins moving
+            setTimeout(() => form.submit(), 500);
+
+            // reset when the animation is done (the page stays open on a download)
+            cd.addEventListener('animationend', function() {
+                cd.classList.remove('play');
+                btn.disabled = false;
+            }, {
+                once: true
+            });
+        });
+    </script>
 </body>
 
 </html>

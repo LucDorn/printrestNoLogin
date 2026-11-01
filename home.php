@@ -73,34 +73,34 @@ unset($_SESSION['new_password']);
         </button>
     </nav>
 
-    <?php if ($newPassword): ?>
-        <div class="password-popup" id="passwordPopup" role="dialog" aria-live="polite">
-            <button class="popup-close" onclick="closePasswordSuccess()" aria-label="Close">&times;</button>
-            <p class="popup-title">your photo has been added to the list</p>
-            <p class="popup-sub">the password to edit your img:</p>
-            <div class="password-box" id="passwordBox" title="Click to copy">
-                <?= htmlspecialchars($newPassword, ENT_QUOTES, 'UTF-8') ?>
-            </div>
-            <small class="copy-hint" id="copyHint">click the password to copy it</small>
+
+    <!-- <div class="password-popup" id="passwordPopup" role="dialog" aria-live="polite">
+        <button class="popup-close" onclick="closePasswordSuccess()" aria-label="Close">&times;</button>
+        <p class="popup-title">your photo has been added to the list</p>
+        <p class="popup-sub">the password to edit your img:</p>
+        <div class="password-box" id="passwordBox" title="Click to copy">
+           // x
         </div>
+        <small class="copy-hint" id="copyHint">click the password to copy it</small>
+    </div>
 
-        <script>
-            const popup = document.getElementById('passwordPopup');
+    <script>
+        const popup = document.getElementById('passwordPopup');
 
-            // Slide in from the right after the page has rendered
-            requestAnimationFrame(() => requestAnimationFrame(() => popup.classList.add('show')));
+        // Slide in from the right after the page has rendered
+        requestAnimationFrame(() => requestAnimationFrame(() => popup.classList.add('show')));
 
-            function closePasswordSuccess() {
-                popup.classList.remove('show');
-                setTimeout(() => popup.remove(), 500);
-            }
+        function closePasswordSuccess() {
+            popup.classList.remove('show');
+            setTimeout(() => popup.remove(), 500);
+        }
 
-            document.getElementById('passwordBox').addEventListener('click', () => {
-                navigator.clipboard.writeText(document.getElementById('passwordBox').textContent.trim())
-                    .then(() => document.getElementById('copyHint').textContent = 'copied!');
-            });
-        </script>
-    <?php endif; ?>
+        document.getElementById('passwordBox').addEventListener('click', () => {
+            navigator.clipboard.writeText(document.getElementById('passwordBox').textContent.trim())
+                .then(() => document.getElementById('copyHint').textContent = 'copied!');
+        });
+    </script> -->
+
 </body>
 
 </html>

@@ -14,7 +14,7 @@ if ($password === '') {
 
 // checks if password correct
 try {
-    $stmt = $conn->prepare("SELECT user_id, time FROM make_edit WHERE password = ? LIMIT 1");
+    $stmt = $conn->prepare("SELECT user_id, time FROM make_edit WHERE password = ?");
     $stmt->bind_param("s", $password);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -45,6 +45,7 @@ try {
     $_SESSION['location']     = $photo['location']          ?? ' ';
     $_SESSION['user_id']      = $userId                     ?? ' ';
     $_SESSION['fileLocation'] = $photo['fileLocation']      ?? ' ';
+    $_SESSION['which'] = 'edit';
 } catch (Throwable $e) {
     error_log('Failed to show photo to user with: ' . $password . ': ' . $e->getMessage());
 } finally {

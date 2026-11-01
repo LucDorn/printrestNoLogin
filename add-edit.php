@@ -5,11 +5,14 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // onwaar of waar: add of edit
 if (($_SESSION['which'] ?? '') === 'edit') {
-    $isEdit = !empty($_SESSION['fileLocation']) && !empty($_SESSION['name']) && !empty($_SESSION['location']);
+    $isEdit = !empty($_SESSION['fileLocation']) || !empty($_SESSION['name']) || !empty($_SESSION['location']);
 } else {
+    $_SESSION['fileLocation'] = '';
+    $_SESSION['name'] = '';
+    $_SESSION['location'] = '';
+    $_SESSION['user_id'] = '';
     $isEdit = false;
 }
-echo $isEdit;
 require_once('./basic/basic-frame.php');
 ?>
 <!DOCTYPE html>
@@ -30,7 +33,9 @@ require_once('./basic/basic-frame.php');
             <?php $existingPhoto = isset($_SESSION['fileLocation']) && $_SESSION['fileLocation'] !== '' ? './betweenPage/photos/' . $_SESSION['fileLocation'] : ''; ?>
             <div class="photo-drop" role="button" tabindex="0" id="photoDrop">
                 <img src="<?php echo htmlspecialchars($existingPhoto, ENT_QUOTES, 'UTF-8'); ?>" alt="" class="preview-img" id="previewImg" style="<?php echo $existingPhoto ? 'display:block;' : ''; ?>">
-                <span class="drop-label" id="dropLabel"><?php echo $existingPhoto ? 'change photo' : 'choose a photo'; ?></span>
+                <?php if (!$isEdit): ?>
+                    <span class="drop-label" id="dropLabel"><?php echo $existingPhoto ? 'change photo' : 'choose a photo'; ?></span>
+                <?php endif; ?>
                 <input type="file" accept="image/*" name="uploadfile" id="uploadfile" <?php echo $existingPhoto ? '' : 'required'; ?> style="display:none;">
             </div>
             <div class="photo-progress"></div>

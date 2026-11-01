@@ -1,18 +1,20 @@
 <?
 require_once('../basic/basicPage.php');
-if (empty($_SESSION['user_id'])) {
+if (empty($_SESSION['user_id']) || empty($_POST['name'] || empty($_POST['location']))) {
     header("Location: ../home.php");
     exit();
 }
-$userId = $_POST['user_id'];
+$id = $_SESSION['user_id'];
+$name = $_POST['name'];
+$locationImg = $_POST['location'];
 
 try {
-    $stmt1 = $conn->prepare("UPDATE photo SET name = ?, location = ? WHERE id = ? ");
-    $stmt1->bind_param("sssi", $name, $location, $id);
+    $stmt1 = $conn->prepare("UPDATE photo SET name = ?, location = ? WHERE user_id = ? ");
+    $stmt1->bind_param("ssi", $name, $locationImg, $id);
     $stmt1->execute();
 } catch (Throwable $e) {
-    error_log('Failed to edit photos for user ' . $userId . ': ' . $e->getMessage());
+    error_log('Failed to edit photos for user ' . $id . ': ' . $e->getMessage());
 } finally {
     session_destroy();
-    header("Location: ../home.php");
+    header("Location: ../list.php");
 }
