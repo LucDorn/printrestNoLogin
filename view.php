@@ -160,24 +160,24 @@
 
     <main class="page">
         <section class="left">
-            <img class="photo" src="<?php echo htmlspecialchars($fileLocation); ?>" alt="<?php echo htmlspecialchars($name); ?>">
+            <img class="photo" src="<?php echo htmlspecialchars($fileLocation, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>">
             <div class="scrollbar"></div>
         </section>
         <section class="right">
             <form method="post" action="./betweenPage/getPDFXLS.php">
                 <div class="field">
                     <span class="label">name of the photo:</span>
-                    <span class="value" id="text"><?php echo htmlspecialchars($name); ?></span>
-                    <input type="hidden" name="text" value="<?php echo htmlspecialchars($name); ?>">
+                    <span class="value" id="text"><?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></span>
+                    <input type="hidden" name="text" value="<?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
                 <div class="field">
                     <span class="label">location name:</span>
-                    <span class="value" id="location-name"><?php echo htmlspecialchars($location); ?></span>
-                    <input type="hidden" name="location" value="<?php echo htmlspecialchars($location); ?>">
+                    <span class="value" id="location-name"><?php echo htmlspecialchars($location, ENT_QUOTES, 'UTF-8'); ?></span>
+                    <input type="hidden" name="location" value="<?php echo htmlspecialchars($location, ENT_QUOTES, 'UTF-8'); ?>">
                 </div>
 
                 <!-- hidden field carrying the image location to the next page -->
-                <input type="hidden" name="img_location" value="<?php echo htmlspecialchars($fileLocation); ?>">
+                <input type="hidden" name="img_location" value="<?php echo htmlspecialchars($fileLocation, ENT_QUOTES, 'UTF-8'); ?>">
 
                 <button class="export" type="submit">export to pdf and xls</button>
             </form>

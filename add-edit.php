@@ -3,11 +3,13 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// true or false: add or edit
-if (!empty($_SESSION['which']) === 'edit') {
-    $isEdit = !empty($_SESSION['fileLocation']) || !empty($_SESSION['name']) || !empty($_SESSION['location']);
+// onwaar of waar: add of edit
+if (($_SESSION['which'] ?? '') === 'edit') {
+    $isEdit = !empty($_SESSION['fileLocation']) && !empty($_SESSION['name']) && !empty($_SESSION['location']);
+} else {
+    $isEdit = false;
 }
-$location = "add-edit.php";
+echo $isEdit;
 require_once('./basic/basic-frame.php');
 ?>
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ require_once('./basic/basic-frame.php');
         <div class="upload-photo-col">
             <?php $existingPhoto = isset($_SESSION['fileLocation']) && $_SESSION['fileLocation'] !== '' ? './betweenPage/photos/' . $_SESSION['fileLocation'] : ''; ?>
             <div class="photo-drop" role="button" tabindex="0" id="photoDrop">
-                <img src="<?php echo htmlspecialchars($existingPhoto); ?>" alt="" class="preview-img" id="previewImg" style="<?php echo $existingPhoto ? 'display:block;' : ''; ?>">
+                <img src="<?php echo htmlspecialchars($existingPhoto, ENT_QUOTES, 'UTF-8'); ?>" alt="" class="preview-img" id="previewImg" style="<?php echo $existingPhoto ? 'display:block;' : ''; ?>">
                 <span class="drop-label" id="dropLabel"><?php echo $existingPhoto ? 'change photo' : 'choose a photo'; ?></span>
                 <input type="file" accept="image/*" name="uploadfile" id="uploadfile" <?php echo $existingPhoto ? '' : 'required'; ?> style="display:none;">
             </div>
@@ -37,14 +39,23 @@ require_once('./basic/basic-frame.php');
         <div class="upload-form-col">
             <div class="form-field">
                 <label for="photo-name">name of the photo:</label>
-                <input type="text" name="name" id="photo-name" value="<?php echo htmlspecialchars($_SESSION['name'] ?? ''); ?>" required>
+                <input type="text" name="name" id="photo-name" value="<?php echo htmlspecialchars($_SESSION['name'], ENT_QUOTES, 'UTF-8' ?? ''); ?>" required>
             </div>
 
             <div class="form-field">
                 <label for="location-name">location name:</label>
-                <input type="text" name="location" id="location-name" value="<?php echo htmlspecialchars($_SESSION['location'] ?? ''); ?>" required>
+                <input type="text" name="location" id="location-name" value="<?php echo htmlspecialchars($_SESSION['location'], ENT_QUOTES, 'UTF-8' ?? ''); ?>" required>
             </div>
-            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($_SESSION['user_id'] ?? ''); ?>">
+
+            <?php if (empty($isEdit)): ?>
+                <div class="form-field">
+                    <label for="password">password:</label>
+                    <input type="password" name="password" id="password"
+                        autocomplete="new-password" required>
+                </div>
+            <?php endif; ?>
+
+            <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($_SESSION['user_id'], ENT_QUOTES, 'UTF-8' ?? ''); ?>">
 
             <div class="confirm-row">
                 <?php if ($existingPhoto): ?>
@@ -61,6 +72,6 @@ require_once('./basic/basic-frame.php');
     <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
 </body>
-<script src="./script/add-edit.js"></script>
+<script src="./css&script/add-edit.js"></script>
 
 </html>

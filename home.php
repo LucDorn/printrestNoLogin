@@ -79,7 +79,7 @@ unset($_SESSION['new_password']);
             <p class="popup-title">your photo has been added to the list</p>
             <p class="popup-sub">the password to edit your img:</p>
             <div class="password-box" id="passwordBox" title="Click to copy">
-                <?= htmlspecialchars($newPassword) ?>
+                <?= htmlspecialchars($newPassword, ENT_QUOTES, 'UTF-8') ?>
             </div>
             <small class="copy-hint" id="copyHint">click the password to copy it</small>
         </div>
